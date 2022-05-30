@@ -4,51 +4,16 @@ title: API Reference
 id: api
 ---
 
-Use Radar APIs as [building blocks for location-based products and services](#building-blocks) like pickup and delivery tracking, location-triggered notifications, location verification, store locators, address autocomplete, and more. Or, use Radar APIs to [manage your Radar data](#manage-your-radar-data), including users, geofences, and events.
-
-The API is RESTful, with predictable, resource-oriented URLs. All responses, including errors, return JSON. <span className="badge badge--info">POST</span> and <span className="badge badge--warning">PUT</span> request body parameters may be sent as `application/json` or `application/x-www-form-urlencoded`.
+Use Radar APIs as [building blocks for location-based products and services](#building-blocks) like pickup and delivery tracking, location-triggered notifications, location verification, store locators, address autocomplete, and more. Or, 
+The API is RESTful, with predictable, resource-oriented URLs. All responses, including errors, return JSON. <span className="badge badge--info">POST</span> and 
 
 ## Authentication
 
 All requests must be authenticated. Authenticate using your API keys, found on the [Settings](https://radar.com/dashboard/settings) page. Include your API key in the `Authorization` header.
 
-API endpoints with authentication level `Publishable` are safe to call client-side (e.g., [from the SDK](/sdk#authentication)). You should use your publishable API keys to call these endpoints. Use your `Test Publishable` key for testing and non-production environments. Use your `Live Publishable` key for production environments.
+API endpoints with authentication level `Publishable` are safe to call client-side (e.g., [from the SDK](/sdk#authentication)). You should use your publishable API keys to call these endpoints. Use your `Test Publishable` key ey for production environments.
 
-API endpoints with authentication level `Secret` are only safe to call server-side. You should use your secret API keys to call these endpoints. Use your `Test Secret` key for testing and non-production environments. Use your `Live Secret` key for production environments. Include your API key in the `Authorization` header.
-
-###### Sample request
-
-```bash
-curl https://api.radar.io/v1/users \
-  -H "Authorization: prj_live_sk_..."
-```
-
-## Errors
-
-The API uses standard HTTP response codes.
-
-###### Response codes
-
-- **`200`**: Success
-- **`202`**: Accepted
-- **`400`**: Bad request (missing or invalid params)
-- **`401`**: Unauthorized (invalid API key)
-- **`402`**: Payment required (organization disabled or usage exceeded)
-- **`403`**: Forbidden (insufficient permissions)
-- **`404`**: Not found
-- **`409`**: Conflict
-- **`429`**: Too many requests (rate limit exceeded, no state change, or selective throttling)
-- **`451`**: Unavailable for legal reasons (country blocklisted)
-- **`500`**: Internal server error
-- **`503`**: Service temporarily unavailable
-
-###### Sample error response
-
-```json
-{
-  "meta": {
-    "code": 400,
-    "param": "latitude",
+API endpoints with authentication level `Secret` are only safe to call server-side. You should use your secret API keys to call these endpoints. Use your `Test Secret` k
     "message": "latitude: Invalid latitude. Valid range: [-90, 90]."
   }
 }
@@ -86,8 +51,7 @@ This endpoint is stateful. For anonymous or stateless context, call the [context
 - **`description`** (string, optional): An optional description for the user, displayed in the dashboard.
 - **`metadata`** (dictionary, optional): An optional dictionary of custom metadata for the user. Up to 16 keys and values of type string, boolean, or number.
 - **`deviceType`** (string, optional): The user's device type, one of `iOS`, `Android`, or `Web`.
-- **`updatedAt`** (datetime, optional): The client timestamp or historical timestamp when the user's location was updated. Historical data must be upserted in chronological order. Optional, defaults to the current server timestamp if not provided or not in chronological order. A valid date or ISO date string.
-
+- **`updatedAt`** (datetime, optional): The client timestamp or historical timestamp when the user's location was updated. Historical data must be upserted 
 ###### Authentication level
 
 Publishable
